@@ -5,22 +5,25 @@ import AuthPresenter from "./AuthPresenter";
 export default () => {
   const [action, setAction] = useState("logIn");
   const userName = useInput("");
-  const password = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
   const email = useInput("");
 
-  console.log(userName, password);
+  console.log(userName);
+
+  const onLogin = e => {
+    e.preventDefault();
+  };
 
   return (
     <AuthPresenter
       action={action}
       setAction={setAction}
       userName={userName}
-      password={password}
       firstName={firstName}
       lastName={lastName}
       email={email}
+      onLogin={onLogin}
     />
   );
 };
