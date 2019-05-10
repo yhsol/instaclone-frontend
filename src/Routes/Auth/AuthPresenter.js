@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
-import useInput from "../../Hooks/useInput";
 
 const Wrapper = styled.div`
   display: flex;

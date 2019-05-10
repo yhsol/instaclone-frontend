@@ -9,8 +9,6 @@ export default () => {
   const lastName = useInput("");
   const email = useInput("");
 
-  console.log(userName);
-
   const onLogin = e => {
     e.preventDefault();
   };
