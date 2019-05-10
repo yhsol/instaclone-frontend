@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
+import Input from "../../Components/Input";
+import Button from "../../Components/Button";
+import useInput from "../../Hooks/useInput";
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,25 +49,41 @@ const Form = styled(Box)`
   }
 `;
 
-export default () => {
-  const [action, setAction] = useState("logIn");
+const FormTitle = styled.div`
+  font-size: 23px;
+  color: ${props => props.theme.blackColor};
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+export default ({
+  action,
+  setAction,
+  userName,
+  password,
+  firstName,
+  lastName,
+  email
+}) => {
+  console.log(userName, password);
 
   return (
     <Wrapper>
       <Form>
+        <FormTitle>INSTACLONE</FormTitle>
         {action === "logIn" ? (
           <form>
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"Username"} {...userName} />
+            <Input placeholder={"Password"} {...password} type="password" />
             <Button text={"Log in"} />
           </form>
         ) : (
           <form>
-            <Input placeholder={"First name"} />
-            <Input placeholder={"Last name"} />
-            <Input placeholder={"Email"} />
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"First name"} {...firstName} />
+            <Input placeholder={"Last name"} {...lastName} />
+            <Input placeholder={"Email"} {...email} type="email" />
+            <Input placeholder={"Username"} {...userName} />
+            <Input placeholder={"Password"} {...password} type="password" />
             <Button text={"Sign up"} />
           </form>
         )}
