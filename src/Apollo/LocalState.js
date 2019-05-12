@@ -13,7 +13,7 @@ export const resolvers = {
       });
       return null;
     },
-    logUserOut: (_, __, { token }) => {
+    logUserOut: (_, __, { cache }) => {
       localStorage.removeItem("token");
       window.location.reload();
       return null;
