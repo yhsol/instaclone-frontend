@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const Footer = styled.div`
   display: flex;
+  bottom: 0;
+  position: fixed;
+  padding: 50px;
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;

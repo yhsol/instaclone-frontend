@@ -4,7 +4,7 @@
 
 - input type 속성
 
-  - input 에서 password, email 등의 type 을 지정할 수 있다.
+  - input 에서 password, email 등의 type 을 지정.
 
 - connect server
   - cd.. (outside of directory)

@@ -2,7 +2,7 @@ import React from "react";
 import GlobalStyles from "../Styles/GlobalStyles";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../Styles/theme";
-import RouterComponent from "./Router";
+import RouterComponent from "./RouterComponent";
 import { useQuery } from "react-apollo-hooks";
 import { QUERY } from "./AppQuery";
 import Footer from "./Footer";

@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { gql } from "apollo-boost";
+import { Link, withRouter } from "react-router-dom";
 import useInput from "../Hooks/useInput";
+import { useQuery } from "react-apollo-hooks";
 import Input from "./Input";
 import { InstaIcon, CompassIcon, HumanIcon, HeartIcon } from "./Icons";
 
 const SHeader = styled.header`
   width: 100%;
   border: 0;
-  position: fixed;
   top: 0;
   left: 0;
   background-color: white;
@@ -42,7 +43,7 @@ const SHeaderList = styled.div`
 `;
 
 const SearchInput = styled(Input)`
-  background-color: ${props => props.theme.bgColor};
+  background-color: ${props => props.theme.backgroundColor};
   padding: 5px;
   font-size: 14px;
   border-radius: 3px;
@@ -61,8 +62,24 @@ const SHeaderLink = styled(Link)`
   }
 `;
 
-const Header = () => {
+const ME = gql`
+  {
+    me {
+      user {
+        userName
+      }
+    }
+  }
+`;
+
+const Header = ({ history }) => {
   const search = useInput("");
+  const { data } = useQuery(ME);
+  console.log(data.me);
+  const onSearchSubmit = e => {
+    e.preventDefault();
+    history.push(`/search?term=${search.value}`);
+  };
 
   return (
     <SHeader>
@@ -73,7 +90,7 @@ const Header = () => {
           </Link>
         </SHeaderList>
         <SHeaderList>
-          <form>
+          <form onSubmit={onSearchSubmit}>
             <SearchInput
               value={search.value}
               onChange={search.onChange}
@@ -88,7 +105,7 @@ const Header = () => {
           <SHeaderLink to="/notifications">
             <HeartIcon />
           </SHeaderLink>
-          <SHeaderLink to="/#">
+          <SHeaderLink to="/:userName">
             <HumanIcon />
           </SHeaderLink>
         </SHeaderList>
@@ -97,4 +114,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
