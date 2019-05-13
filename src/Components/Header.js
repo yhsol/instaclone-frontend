@@ -65,9 +65,7 @@ const SHeaderLink = styled(Link)`
 const ME = gql`
   {
     me {
-      user {
-        userName
-      }
+      userName
     }
   }
 `;
