@@ -7,9 +7,12 @@
   - input 에서 password, email 등의 type 을 지정.
 
 - connect server
+
   - cd.. (outside of directory)
   - cd "server directory"
   - yarn dev
+
+- svg 이미지 사이즈 등 특정 속성 활용 방법 (Icons.js 확인)
 
 # PROCESS
 

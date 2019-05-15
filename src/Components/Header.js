@@ -103,9 +103,15 @@ const Header = ({ history }) => {
           <SHeaderLink to="/notifications">
             <HeartIcon />
           </SHeaderLink>
-          <SHeaderLink to="/:userName">
-            <HumanIcon />
-          </SHeaderLink>
+          {!data.me ? (
+            <SHeaderLink to="/#">
+              <HumanIcon />
+            </SHeaderLink>
+          ) : (
+            <SHeaderLink to={data.me.userName}>
+              <HumanIcon />
+            </SHeaderLink>
+          )}
         </SHeaderList>
       </SHeaderWrapper>
     </SHeader>
