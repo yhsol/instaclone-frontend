@@ -31,7 +31,18 @@ PostContainer.propTypes = {
   ).isRequired,
   isLiked: PropTypes.bool.isRequired,
   likeCount: PropTypes.number.isRequired,
-  comment: PropTypes,
+  comment: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      user: PropTypes.objectOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          userName: PropTypes.string
+        })
+      ).isRequired
+    })
+  ).isRequired,
   createdAt: PropTypes.string.isRequired
 };
 
