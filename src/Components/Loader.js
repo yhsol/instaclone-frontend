@@ -1,8 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { InstaIcon } from "./Icons";
 
-const SLoader = styled.div``;
+const Animation = keyframes`
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1 
+    }
+    100% {
+        opacity: 0
+    }
+`;
+
+const SLoader = styled.div`
+  animation: ${Animation} 1s linear infinite;
+`;
 
 const Loader = () => {
   return (
