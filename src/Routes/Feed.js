@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
@@ -48,6 +49,9 @@ const Feed = () => {
 
   return (
     <Wrapper>
+      <Helmet>
+        <title>Feed | Instaclone</title>
+      </Helmet>
       {loading && <Loader />}
       {!loading &&
         data &&
@@ -62,6 +66,8 @@ const Feed = () => {
             likeCount={post.likeCount}
             comment={post.comment}
             createdAt={post.createdAt}
+            caption={post.caption}
+            location={post.location}
           />
         ))}
     </Wrapper>

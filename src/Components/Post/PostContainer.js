@@ -10,7 +10,9 @@ const PostContainer = ({
   isLiked,
   likeCount,
   comment,
-  createdAt
+  createdAt,
+  location,
+  caption
 }) => {
   const [isLikedS, setIsLikedS] = useState(isLiked);
   const [likeCountS, setLikeCountS] = useState(likeCount);
@@ -26,6 +28,8 @@ const PostContainer = ({
       newComment={commentS}
       setIsLikedS={setIsLikedS}
       setLikeCountS={setLikeCountS}
+      location={location}
+      caption={caption}
     />
   );
 };
@@ -55,6 +59,8 @@ PostContainer.propTypes = {
       }).isRequired
     })
   ).isRequired,
+  caption: PropTypes.string.isRequired,
+  location: PropTypes.string,
   createdAt: PropTypes.string.isRequired
 };
 
