@@ -29,13 +29,23 @@ const Location = styled.span`
 `;
 
 const Files = styled.div`
+  position: relative;
+  padding-bottom: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  flex-shrink: 0;
 `;
 
 const File = styled.img`
   max-width: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 500px;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center;
 `;
 
 const Button = styled.span`
@@ -83,7 +93,8 @@ const PostPresenter = ({
   isLiked,
   likeCount,
   createdAt,
-  newComment
+  newComment,
+  caption
 }) => {
   return (
     <Post>
@@ -106,6 +117,7 @@ const PostPresenter = ({
           </Button>
         </Buttons>
         <FatText text={likeCount === 1 ? "1 like" : `${likeCount} like`} />
+        <div>{caption}</div>
         <TimeStamp>{createdAt}</TimeStamp>
         <TextArea
           placeholder={"Add a comment..."}

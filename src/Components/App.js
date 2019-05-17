@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { HashRouter as Router } from "react-router-dom";
 
 const Wrapper = styled.div`
-  margin: 0 auto;
+  margin: 3rem auto 0;
   max-width: ${props => props.theme.maxWidth};
   width: 100%;
 `;
