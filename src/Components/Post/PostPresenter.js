@@ -1,4 +1,5 @@
 import React from "react";
+import TextareaAutosize from "react-autosize-textarea";
 import styled from "styled-components";
 import FatText from "../FatText";
 import Avatar from "../Avatar";
@@ -27,7 +28,11 @@ const Location = styled.span`
   font-size: 12px;
 `;
 
-const Files = styled.div``;
+const Files = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const File = styled.img`
   max-width: 100%;
@@ -47,6 +52,7 @@ const Buttons = styled.div`
       margin-right: 10px;
     }
   }
+  margin: 10px 0px;
 `;
 
 const TimeStamp = styled.span`
@@ -60,13 +66,24 @@ const TimeStamp = styled.span`
   padding-bottom: 10px;
 `;
 
+const TextArea = styled(TextareaAutosize)`
+  border: none;
+  font-weight: 500;
+  width: 100%;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+`;
+
 const PostPresenter = ({
   user: { userName, avatar },
   location,
   files,
   isLiked,
   likeCount,
-  createdAt
+  createdAt,
+  newComment
 }) => {
   return (
     <Post>
@@ -89,6 +106,12 @@ const PostPresenter = ({
         </Buttons>
         <FatText text={likeCount === 1 ? "1 like" : `${likeCount} like`} />
         <TimeStamp>{createdAt}</TimeStamp>
+        <TextArea
+          placeholder={"Add a comment..."}
+          {...newComment}
+          onResize={e => {}}
+        />
+        ,
       </Meta>
     </Post>
   );
