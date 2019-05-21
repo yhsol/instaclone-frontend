@@ -46,6 +46,8 @@ const File = styled.img`
   background-image: url(${props => props.src});
   background-size: cover;
   background-position: center;
+  opacity: ${props => (props.showing ? 1 : 0)};
+  transition: opacity 0.5s linear;
 `;
 
 const Button = styled.span`
@@ -94,7 +96,8 @@ const PostPresenter = ({
   likeCount,
   createdAt,
   newComment,
-  caption
+  caption,
+  currentItem
 }) => {
   return (
     <Post>
@@ -107,7 +110,13 @@ const PostPresenter = ({
       </Header>
       <Files>
         {files &&
-          files.map(file => <File key={file.id} id={file.id} src={file.url} />)}
+          files.map((file, index) => (
+            <File
+              key={file.id}
+              src={file.url}
+              showing={index === currentItem}
+            />
+          ))}
       </Files>
       <Meta>
         <Buttons>

@@ -44,6 +44,7 @@ const PostContainer = ({
       setLikeCountS={setLikeCountS}
       location={location}
       caption={caption}
+      currentItem={currentItem}
     />
   );
 };
