@@ -4,7 +4,6 @@ import PostPresenter from "./PostPresenter";
 import useInput from "../../Hooks/useInput";
 import { TOGGLE_LIKE, ADD_COMMENT } from "./PostQuery";
 import { useMutation } from "react-apollo-hooks";
-import { toast } from "react-toastify";
 
 const PostContainer = ({
   id,
@@ -41,7 +40,6 @@ const PostContainer = ({
   console.log(currentItem);
 
   const toggleLike = () => {
-    toggleLikeMutation();
     if (isLikedS === true) {
       setIsLikedS(false);
       setLikeCountS(likeCountS - 1);
@@ -49,6 +47,16 @@ const PostContainer = ({
       setIsLikedS(true);
       setLikeCountS(likeCountS + 1);
     }
+    toggleLikeMutation();
+  };
+
+  const onKeyUp = e => {
+    const { keyCode } = e;
+    if (keyCode === 13) {
+      commentS.setValue("");
+      // addCommentMutation();
+    }
+    return;
   };
 
   return (
@@ -66,6 +74,7 @@ const PostContainer = ({
       caption={caption}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKeyUp={onKeyUp}
     />
   );
 };

@@ -99,7 +99,8 @@ const PostPresenter = ({
   newComment,
   caption,
   currentItem,
-  toggleLike
+  toggleLike,
+  onKeyUp
 }) => {
   return (
     <Post>
@@ -134,8 +135,9 @@ const PostPresenter = ({
         <TimeStamp>{createdAt}</TimeStamp>
         <TextArea
           placeholder={"Add a comment..."}
-          {...newComment}
-          onResize={e => {}}
+          value={newComment.value}
+          onChange={newComment.onChange}
+          onKeyUp={onKeyUp}
         />
       </Meta>
     </Post>
