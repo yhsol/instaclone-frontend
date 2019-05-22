@@ -37,9 +37,9 @@ const PostContainer = ({
   useEffect(() => {
     slideFn();
   }, [currentItem]);
-  console.log(currentItem);
 
   const toggleLike = () => {
+    toggleLikeMutation();
     if (isLikedS === true) {
       setIsLikedS(false);
       setLikeCountS(likeCountS - 1);
@@ -47,7 +47,6 @@ const PostContainer = ({
       setIsLikedS(true);
       setLikeCountS(likeCountS + 1);
     }
-    toggleLikeMutation();
   };
 
   const onKeyUp = e => {

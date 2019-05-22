@@ -89,6 +89,17 @@ const TextArea = styled(TextareaAutosize)`
   }
 `;
 
+const Comments = styled.ul`
+  margin-top: 10px;
+`;
+
+const Comment = styled.li`
+  margin-bottom: 8px;
+  span {
+    margin-right: 5px;
+  }
+`;
+
 const PostPresenter = ({
   user: { userName, avatar },
   location,
@@ -100,7 +111,8 @@ const PostPresenter = ({
   caption,
   currentItem,
   toggleLike,
-  onKeyUp
+  onKeyUp,
+  comment
 }) => {
   return (
     <Post>
@@ -131,7 +143,16 @@ const PostPresenter = ({
           </Button>
         </Buttons>
         <FatText text={likeCount === 1 ? "1 like" : `${likeCount} like`} />
-        <div>{caption}</div>
+        {comment && (
+          <Comments>
+            {comment.map(commentItem => (
+              <Comment key={commentItem.id}>
+                <FatText text={commentItem.user.userName} />
+                {commentItem.text}
+              </Comment>
+            ))}
+          </Comments>
+        )}
         <TimeStamp>{createdAt}</TimeStamp>
         <TextArea
           placeholder={"Add a comment..."}
