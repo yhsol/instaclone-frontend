@@ -111,8 +111,9 @@ const PostPresenter = ({
   caption,
   currentItem,
   toggleLike,
-  onKeyUp,
-  comment
+  onKeyPress,
+  comment,
+  selfComments
 }) => {
   return (
     <Post>
@@ -151,6 +152,12 @@ const PostPresenter = ({
                 {commentItem.text}
               </Comment>
             ))}
+            {selfComments.map(commentItem => (
+              <Comment key={commentItem.id}>
+                <FatText text={commentItem.user.userName} />
+                {commentItem.text}
+              </Comment>
+            ))}
           </Comments>
         )}
         <TimeStamp>{createdAt}</TimeStamp>
@@ -158,7 +165,7 @@ const PostPresenter = ({
           placeholder={"Add a comment..."}
           value={newComment.value}
           onChange={newComment.onChange}
-          onKeyUp={onKeyUp}
+          onKeyPress={onKeyPress}
         />
       </Meta>
     </Post>
