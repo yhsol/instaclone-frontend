@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import FatText from "../../Components/FatText";
 import Loader from "../../Components/Loader";
+import SquarePost from "../../Components/SquarePost";
 import UserCard from "../../Components/UserCard";
 
 const Wrapper = styled.div`
@@ -18,7 +19,11 @@ const Section = styled.div`
   margin-bottom: 50px;
 `;
 
-const PostSection = styled.div``;
+const PostSection = styled(Section)`
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 10rem;
+  grid-auto-rows: 10rem;
+`;
 
 const SearchPresenter = ({ searchTerm, loading, data }) => {
   // console.log(data);
@@ -57,7 +62,14 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
           {data.searchPost.length === 0 ? (
             <FatText text={"No Post Found"} />
           ) : (
-            data.searchPost.map(post => <UserCard />)
+            data.searchPost.map(post => (
+              <SquarePost
+                key={post.id}
+                files={post.files[0]}
+                likeCount={post.likeCount}
+                commentCount={post.commentCount}
+              />
+            ))
           )}
         </PostSection>
       </Wrapper>

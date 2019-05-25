@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
-import Profile from "../Routes/Profile";
+import Profile from "../Routes/Profile/Profile";
 import AuthContainer from "../Routes/Auth";
 import Search from "../Routes/Search";
 import Notifications from "../Routes/Notifications";
