@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Avatar from "./Avatar";
 import FatText from "./FatText";
-import Button from "./Button";
+import FollowButton from "./FollowButton";
 
 const Card = styled.div`
   ${props => props.theme.whiteBox};
@@ -26,7 +26,7 @@ const CardItem = styled.div`
   margin-bottom: 12px;
 `;
 
-const UserCard = ({ userName, isFollowing, url, itsMe }) => {
+const UserCard = ({ id, userName, isFollowing, url, itsMe }) => {
   return (
     <Card>
       <CardItem>
@@ -39,12 +39,13 @@ const UserCard = ({ userName, isFollowing, url, itsMe }) => {
           <FatText text={userName} />
         </SLink>
       </CardItem>
-      {!itsMe && <Button text={isFollowing ? "Unfollow" : "Follow"} />}
+      {!itsMe && <FollowButton id={id} isFollowing={isFollowing} />}
     </Card>
   );
 };
 
 UserCard.propTypes = {
+  id: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
   isFollowing: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired,
