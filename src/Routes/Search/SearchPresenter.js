@@ -9,7 +9,14 @@ const Wrapper = styled.div`
   height: 50vh;
 `;
 
-const Section = styled.div``;
+const Section = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 10rem;
+  grid-auto-rows: 10rem;
+  grid-gap: 20px;
+  margin-bottom: 50px;
+`;
 
 const PostSection = styled.div``;
 
