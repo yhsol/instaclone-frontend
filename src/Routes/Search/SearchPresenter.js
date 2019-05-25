@@ -21,6 +21,7 @@ const Section = styled.div`
 const PostSection = styled.div``;
 
 const SearchPresenter = ({ searchTerm, loading, data }) => {
+  // console.log(data);
   if (searchTerm === undefined) {
     return (
       <Wrapper>

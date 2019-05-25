@@ -47,7 +47,7 @@ export default () => {
           const {
             data: { requestSecret }
           } = await requestSecretMutation();
-          console.log(requestSecret);
+          // console.log(requestSecret);
           if (!requestSecret) {
             toast.error("You don't have an account yet, create account!");
             setTimeout(() => {
@@ -92,7 +92,7 @@ export default () => {
           const {
             data: { confirmSecret: token }
           } = await confirmSecretMutation();
-          console.log(token);
+          // console.log(token);
           if (token !== "" && token !== undefined) {
             localLogInMutation({ variables: { token } });
           } else {

@@ -11,6 +11,7 @@ export const SEARCH = gql`
     searchUser(term: $term) {
       id
       avatar
+      itsMe
       userName
       isFollowing
     }
