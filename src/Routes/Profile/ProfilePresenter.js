@@ -8,16 +8,24 @@ import SquarePost from "../../Components/SquarePost";
 import FollowButton from "../../Components/FollowButton";
 
 const Wrapper = styled.div`
+  margin: 0 auto;
   min-height: 60vh;
+  width: 80%;
 `;
 
 const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 80%;
   margin: 0 auto;
   margin-bottom: 40px;
+  padding: 0px 0px 20px;
+  border-bottom: 1px solid ${props => props.theme.greyColor};
+`;
+
+const HeaderTitle = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const HeaderItems = styled.div``;
@@ -28,6 +36,7 @@ const HeaderItemsRows = styled.div`
 `;
 
 const UserTitle = styled.span`
+  margin-right: 14px;
   font-size: 19px;
   display: block;
 `;
@@ -88,29 +97,32 @@ const ProfilePresenter = ({ data, loading, logOut }) => {
           <HeaderItems>
             <Avatar size={"lg"} url={avatar} />
           </HeaderItems>
-          <HeaderItems>
-            <HeaderItemsRows>
-              <UserTitle>{userName}</UserTitle>{" "}
-              {itsMe ? (
-                <Button onClick={logOut} text="Log Out" />
-              ) : (
-                <FollowButton isFollowing={isFollowing} id={id} />
-              )}
-            </HeaderItemsRows>
-          </HeaderItems>
-          <Counts>
-            <Count>
-              <FatText text={String(postsCount)} /> posts
-            </Count>
-            <Count>
-              <FatText text={String(followersCount)} /> followers
-            </Count>
-            <Count>
-              <FatText text={String(followingCount)} /> following
-            </Count>
-          </Counts>
-          <FullName text={fullName} />
-          <Bio>{bio}</Bio>
+          <HeaderTitle>
+            <HeaderItems>
+              <HeaderItemsRows>
+                <UserTitle>{userName}</UserTitle>
+                {"  "}
+                {itsMe ? (
+                  <Button onClick={logOut} text="Log Out" />
+                ) : (
+                  <FollowButton isFollowing={isFollowing} id={id} />
+                )}
+              </HeaderItemsRows>
+            </HeaderItems>
+            <Counts>
+              <Count>
+                <FatText text={String(postsCount)} /> posts
+              </Count>
+              <Count>
+                <FatText text={String(followersCount)} /> followers
+              </Count>
+              <Count>
+                <FatText text={String(followingCount)} /> following
+              </Count>
+            </Counts>
+            <FullName text={fullName} />
+            <Bio>{bio}</Bio>
+          </HeaderTitle>
         </Header>
         <Posts>
           {post &&
