@@ -41,6 +41,14 @@ const UserTitle = styled.span`
   display: block;
 `;
 
+const UserButtonList = styled.div`
+  display: flex;
+`;
+
+const UserButton = styled.div`
+  margin-right: 10px;
+`;
+
 const Counts = styled.ul`
   display: flex;
   margin: 15px 0px;
@@ -103,7 +111,14 @@ const ProfilePresenter = ({ data, loading, logOut }) => {
                 <UserTitle>{userName}</UserTitle>
                 {"  "}
                 {itsMe ? (
-                  <Button onClick={logOut} text="Log Out" />
+                  <UserButtonList>
+                    <UserButton>
+                      <Button onClick={logOut} text="Edit Profile" />
+                    </UserButton>
+                    <UserButton>
+                      <Button onClick={logOut} text="Log Out" />
+                    </UserButton>
+                  </UserButtonList>
                 ) : (
                   <FollowButton isFollowing={isFollowing} id={id} />
                 )}
